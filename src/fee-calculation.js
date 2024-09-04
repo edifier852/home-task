@@ -5,7 +5,6 @@ import { CachInFee, CachOutJuridicalFee, CachOutNaturalFee } from './fee.js';
 
 /**
  * Factory returns correct fee
- *
  * @param {Object} operation - The operation data with operation and user type
  * @param {number} totalAmout - Total amount of cash out for user type natural
  */
@@ -14,9 +13,11 @@ const createFee = (operation, totalAmout) => {
         return new CachInFee(operation, cachInFee);
     } else if (operation.user_type === UserTypes.juridical) {
         return new CachOutJuridicalFee(operation, cashOutJuridicalFee);
-    } else {
+    } else if (operation.user_type === UserTypes.natural) {
         return new CachOutNaturalFee(operation, cashOutNaturalFee, totalAmout);
     }
+
+    throw new Error('Should be defined correct operation user type!');
 }
 
 /**
