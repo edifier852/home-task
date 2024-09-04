@@ -1,0 +1,13 @@
+{
+  "name": "test-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node ./src/app.js ./src/input.json",
+    "test": "node --test --trace-warnings"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
